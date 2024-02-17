@@ -43,20 +43,12 @@ export default function Signup() {
     try {
       const userRef = await addDoc(collection(db, 'users'), {
         userId: user.uid,
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
+        displayName: '',
         phoneNumber: '',
         profilePicture: '',
         accountStatus: 'inActive',
         role: '',
         email: user.email,
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
         createdAt: serverTimestamp(),
       });
       // Add additional fields or data as needed
@@ -80,26 +72,13 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider)
       const user = result.user
       const userRef = await addDoc(collection(db, 'users'), {
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
+        userId: user.uid,
+        displayName: '',
         phoneNumber: '',
         profilePicture: '',
-        billingAddress: '',
+        accountStatus: 'inActive',
         role: '',
         email: user.email,
-        userId: user.uid,
-        bankAccount: {
-          accountHolderName: '',
-          accountNumber: '',
-          BSB: '',
-        },
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
         createdAt: serverTimestamp(),
       })
     } catch (error: any) {
@@ -155,26 +134,13 @@ export default function Signup() {
       // Make the HTTP request to the api/welcomeuser route
       await axios.post('/api/welcomeuser', userData);
       const userRef = await addDoc(collection(db, 'users'), {
-        firstName: '',
-        lastName: '',
-        dateOfBirth: '',
+        userId: user.uid,
+        displayName: '',
         phoneNumber: '',
         profilePicture: '',
-        billingAddress: '',
+        accountStatus: 'inActive',
         role: '',
         email: user.email,
-        userId: user.uid,
-        bankAccount: {
-          accountHolderName: '',
-          accountNumber: '',
-          BSB: '',
-        },
-        aboutDescription: '',
-        postalCode: '',
-        tag: '',
-        city: '',
-        skills: [],
-        education: [],
         createdAt: serverTimestamp(),
       });
       router.push('/setup-profile');
