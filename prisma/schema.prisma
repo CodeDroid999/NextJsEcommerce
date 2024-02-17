@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider     = "mongodb"
-  url          = env("mongodb+srv://groot:groot999@cluster0.iacjvlb.mongodb.net/?retryWrites=true&w=majority")
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
