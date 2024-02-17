@@ -19,6 +19,7 @@ import {
 } from 'firebase/firestore'
 import Head from 'next/head'
 import { auth, db } from '@/firebase'
+import AuthLayout from '@/components/layout/AuthLayout'
 
 export default function Page() {
   const [passwordVisible, setPasswordVisible] = useState(false)
@@ -74,41 +75,34 @@ export default function Page() {
     provider.setCustomParameters({
       prompt: 'select_account',
     });
-
+  
     try {
       const result = await signInWithPopup(auth, provider)
       const user = result.user
-
+  
       const googleUserId = user.uid
-
+  
       const userDocRef = doc(db, 'users', googleUserId)
       const userDocSnapshot = await getDoc(userDocRef)
-
+  
       if (!userDocSnapshot.exists()) {
         const userRef = await addDoc(collection(db, 'users'), {
           userId: user.uid,
-          firstName: '',
-          lastName: '',
-          dateOfBirth: '',
+          displayName: '',
           phoneNumber: '',
           profilePicture: '',
           accountStatus: 'inActive',
           role: '',
           email: user.email,
-          aboutDescription: '',
-          postalCode: '',
-          tag: '',
-          city: '',
-          skills: [],
-          education: [],
           createdAt: serverTimestamp(),
         })
       }
-    } catch (error) {
+    } catch (error: any) {
       const errorCode = error.code
       const errorMessage = error.message
     }
   }
+  
 
   const handleSignIn = async (event: any) => {
     event.preventDefault();
