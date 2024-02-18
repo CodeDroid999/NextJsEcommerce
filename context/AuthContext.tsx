@@ -112,10 +112,8 @@ export function AuthContextProvider({
 
             setUser(userData);
             setUserRole(userData.role); // Assuming 'role' is a field in your user data
-            setAccountStatus(userData.accountStatus);
-            setFirstName(userData.firstName);
-            setLastName(userData.lastName);
-            setUserId(userData.lastName)
+            setDisplayName(userData.displayName);
+            setUserId(userData.userId)
             // Update the userId property
 
             setError(null);
@@ -132,10 +130,7 @@ export function AuthContextProvider({
         };
       } else {
         setUser(null);
-        setUserRole(null);
-        setAccountStatus(null);
-        setFirstName(null);
-        setLastName(null);
+        setDisplayName(null);
         setUserId(null);
         setLoading(false);
       }
@@ -168,7 +163,7 @@ export function AuthContextProvider({
   }
 
   return (
-    <AuthContext.Provider value={{ user, userRole, logOut, loading, error, accountStatus, firstName, lastName, userId }}>
+    <AuthContext.Provider value={{ user, userRole, logOut, loading, error, displayName, userId }}>
       {children}
     </AuthContext.Provider>
   );
