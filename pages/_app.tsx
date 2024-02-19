@@ -7,14 +7,14 @@ import { AuthContextProvider } from '@/context/AuthContext'
 
 
 export default function App({
- 
+
 
 
   return (
     <>
       <AuthContextProvider>
         <Toaster position="bottom-center" />
-       
+
       </AuthContextProvider>
     </>
   )
