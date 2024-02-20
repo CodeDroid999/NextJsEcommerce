@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
 
 import { ModalProvider } from '@/providers/modal-provider'
@@ -5,7 +6,6 @@ import { ToastProvider } from '@/providers/toast-provider'
 import { ThemeProvider } from '@/providers/theme-provider'
 
 import './globals.css'
-import { AuthContextProvider } from '@/context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +20,12 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <AuthContextProvider>
+    <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
+          <ThemeProvider 
+            attribute="class" 
+            defaultTheme="system" 
             enableSystem
           >
             <ToastProvider />
@@ -34,6 +34,6 @@ export default async function RootLayout({
           </ThemeProvider>
         </body>
       </html>
-    </AuthContextProvider>
+    </ClerkProvider>
   )
 }
