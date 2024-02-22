@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider     = "postgres"
-  url          = env("DATABASE_URL")
+  url          = "postgresql://postgres:postgres@999@localhost:5432/postgres?sslmode=prefer&connect_timeout=10"
   relationMode = "prisma"
 }
 
